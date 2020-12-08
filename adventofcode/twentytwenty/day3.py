@@ -44,6 +44,37 @@ def sled_down_hill(rise, run):
             check_index = new_run if i != 0 else 0
             # Prepare the hill line by cascading the length of each line the farther
             # down you go. There is certainly a better way to do this...
+            """
+            You can make an iterator that loops back to the left side data using modulus of the row lengh:
+            follow the "\" for my logic 
+            \#....#...#.#.....#####........
+            ..\#.#..#.#.##.#.##..##...#....
+            ..#..\..#..#..#....#..#..##...#
+            .#.....#\...##.##....##.....#..
+            #...#.....#\....#.#...#.#....#.
+            .###...#..##..\.#..#...#.###...
+            ....#..##..#.....\.#.##.##..###
+            #.......##.....#....\..#.#...##
+            #.....#.#.#....#.#.....\#.#.#..
+            ..##.....#..###......##...\....
+            .....#...#..##....#......#...\.
+            \..#..#....#.#...#..###.......#
+            ..\..#.....#....#..#...#.#..##.
+            ####\........#...#..#..##..#.#.
+            .#..#.\.#.##....#.#..#......###
+            #.###.#..\.....##..##....#...#.
+            .#...#.####\....##..........##.
+            
+            code example:
+                
+                
+                for row in data:
+                    if row[iterator] == "#":
+                        count += 1
+                    iterator = (iterator + run) % row_length
+            """
+            
+            
             hill_line = (line.strip() + line.strip()) * (i + 1)
             # print(hill_line)
             # print(hill_line[check_index])
